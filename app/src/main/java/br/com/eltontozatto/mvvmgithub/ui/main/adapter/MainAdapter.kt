@@ -1,5 +1,6 @@
 package br.com.eltontozatto.mvvmgithub.ui.main.adapter
 
+import android.annotation.SuppressLint
 import android.support.v7.widget.AppCompatTextView
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +26,7 @@ class MainAdapter(private val users: ArrayList<User>): RecyclerView.Adapter<Main
         }
     }
 
+    @SuppressLint("ResourceType")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder = DataViewHolder (
         LayoutInflater.from(parent.context).inflate(
             R.id.item_layout,

@@ -14,6 +14,7 @@ import br.com.eltontozatto.mvvmgithub.R
 import br.com.eltontozatto.mvvmgithub.data.api.ApiHelper
 import br.com.eltontozatto.mvvmgithub.data.api.ApiServiceImpl
 import br.com.eltontozatto.mvvmgithub.data.model.User
+import br.com.eltontozatto.mvvmgithub.ui.base.ViewModelFactory
 import br.com.eltontozatto.mvvmgithub.ui.main.adapter.MainAdapter
 import br.com.eltontozatto.mvvmgithub.ui.main.viewmodel.MainViewModel
 import br.com.eltontozatto.mvvmgithub.ui.utils.Status
