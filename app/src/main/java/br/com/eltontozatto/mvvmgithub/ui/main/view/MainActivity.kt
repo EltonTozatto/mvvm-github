@@ -1,12 +1,13 @@
 package br.com.eltontozatto.mvvmgithub.ui.main.view
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ import br.com.eltontozatto.mvvmgithub.R
 import br.com.eltontozatto.mvvmgithub.data.api.ApiHelper
 import br.com.eltontozatto.mvvmgithub.data.api.ApiServiceImpl
 import br.com.eltontozatto.mvvmgithub.data.model.User
+import br.com.eltontozatto.mvvmgithub.data.repository.MainRepository
 import br.com.eltontozatto.mvvmgithub.ui.base.ViewModelFactory
 import br.com.eltontozatto.mvvmgithub.ui.main.adapter.MainAdapter
 import br.com.eltontozatto.mvvmgithub.ui.main.viewmodel.MainViewModel
@@ -33,11 +35,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        mainViewModel = ViewModelProviders.of(
-                this,
-                ViewModelFactory(ApiHelper(ApiServiceImpl())
-            ).get(MainViewModel::class.java)
-        )
+        val mainRepository = MainRepository(ApiHelper(ApiServiceImpl()))
+        val factory = ViewModelFactory(mainRepository)
+        mainViewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
     }
 
     private fun setupObserver() {
